@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FIKA</title>
+	<style type="text/css">
+		body
+		{
+			font-family: verdana;
+			font-size: 30px;
+			padding-top: 20%;
+		}
+	</style>
+</head>
+<body onload="getName()">
+<script>
+	Date.prototype.getWeek = function() {
+		var onejan = new Date(this.getFullYear(),0,1);
+		return Math.ceil((((this - onejan) / 86400000) + onejan.getDay())/7);
+	}
+
+	var today = new Date();
+	var week = today.getWeek();
+	var hour = today.getHours();
+	var day = today.getDay();
+
+	if((day > 3) || (day == 3 && hour >= 19)){
+	    week++;
+	}
+	 
+	var ansvarig = 	['Daniel',
+					'Anton',
+					'Cricka',
+					'Chrilleeeeeeeeee',
+					'Sofia',
+					'Sofie'
+					];
+
+	function getName(){
+		if(day == new Date('2014-09-29').getDay())
+		{
+			document.getElementById('namn').innerHTML = "Amanda och Marcus fixar fika!"
+			document.getElementById('chrille').innerHTML = "(Chrille betalar(30 000 kr/mån))"
+		}
+		else
+    		document.getElementById('namn').innerHTML = ansvarig[Math.floor((week+6)/2)%6] + " fixar fika!";
+	}
+
+</script>
+<center>
+	<h1 id="namn"></h1>
+	<h4 id="chrille"></h4>
+</center>
+</body>
+</html>

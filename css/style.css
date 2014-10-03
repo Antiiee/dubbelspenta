@@ -1,0 +1,48 @@
+html, body
+{
+}
+#head
+{
+	margin-top: 15px;
+}
+#main
+{
+	background-color: white;
+	padding-bottom: 50px;
+}
+#background
+{
+	width: 200%;
+	margin: 0;
+	margin-left: -10%;
+	padding: 0;
+	top: 0;
+	position: fixed;
+	z-index: -1;
+	height: 100%;
+	overflow: hidden;
+}
+.background-image
+{
+	width: 300px;
+}
+.bg-wrapper
+{
+	position: relative;
+	height: 35%;
+}
+.picture
+{
+	margin: 0 auto;
+	max-width: 200px;
+	width: 100%;
+}
+
+#main> div
+{
+	margin-bottom: 65px;
+}
+.member
+{
+	margin-bottom: 10px;
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE>
+<html ng-app="dubbelspenta">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dubbelspenta</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+
+	<script type="text/javascript" src="js/script.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<head>
+	<div id="head" class="container">
+		<div class="row">
+			<nav class="navbar navbar-default navbar-dubbelspenta">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+					      <span class="sr-only">Toggle navigation</span>
+					      <span class="icon-bar"></span>
+					      <span class="icon-bar"></span>
+					      <span class="icon-bar"></span>
+					    </button>
+						<a class="navbar-brand" href="#">Dubbelspenta</a>
+					</div>
+					<div class="collapse navbar-collapse" id="navbar-collapse-target">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a id="linkgruppen" href="">gruppen</a></li>
+							<li><a id="linkbudorden" href="">budorden</a></li>
+							<li><a id="linktrain" href="">tåget</a></li>
+							<li><a id="linkhistorian" href="">historian</a></li>
+						</ul>
+					</div>
+				</nav>
+		</div>
+	</div>
+</head>
+
+<div class="container-fluid bg-wrapper">
+	<div class="row-fluid">
+		<div id="background" ng-controller="bg-controller">
+			<img ng-repeat="img in images" src="{{ img.images.low_resolution.url }}" class="background-image">
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	<div ng-controller="presentation-controller">
+		<div id="gruppen" class="container" >
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<h1 class="hidden-xs text-center">Dubbelspentagruppen</h1>
+					<h3 class="visible-xs text-center">Dubbelspentagruppen</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="col-xs-6 member" ng-repeat="member in gruppen.members">
+						<div class="row">
+							<div class="col-xs-12">
+								<img class="picture img-circle img-responsive" src="{{ member.image }}">
+							</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-xs-12">
+								{{ member.name }}
+							</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-xs-12">
+								{{ member.position }}
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+
+		<div id="enkelspentor" class="container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<h1 class="hidden-xs text-center">Enkelspentor</h1>
+					<h3 class="visible-xs text-center">Enkelspentor</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="col-xs-6 member" ng-repeat="member in enkel.members">
+						<div class="row">
+							<div class="col-xs-12">
+								<img class="picture img-circle img-responsive" src="{{ member.image }}">
+							</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-xs-12">
+								{{ member.name }}
+							</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-xs-12">
+								{{ member.position }}
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+
+		<div id="kvadrupel" class="container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<h1 class="hidden-xs text-center">Kvadrupelspentagruppen</h1>
+					<h3 class="visible-xs text-center">Kvadrupelspentagruppen</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="col-xs-6 member" ng-repeat="member in kvadrupel.members">
+						<div class="row">
+							<div class="col-xs-12">
+								<img class="picture img-circle img-responsive" src="{{ member.image }}">
+							</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-xs-12">
+								{{ member.name }}
+							</div>
+						</div>
+						<div class="row text-center">
+							<div class="col-xs-12">
+								{{ member.position }}
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="budorden" class="container text-center" ng-controller="budord-controller">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<h1>Budorden</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-left">
+				<ul>
+					<li ng-repeat="ord in budord">{{ ord }}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div id="train" class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<h1 class="text-center">Dubbelspentatåget</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<p>
+					Dubbelspentan är en mytomspunnen beställning som ofta mynnar ut i ett så kallat Dubbelspentatåg. Fenomenet består av att flertalet ölsugna människor beställer var sin Dubbelspenta, ställer sig på rad och sjunger enligt nedan i en unison stämma:
+				</p>
+				<p class="text-center">
+					Dubbel-spenta-tå-get,<br>
+					Dubbel-spenta-tå-get,<br>
+					Sha-la-la-la,<br>
+					Sha-la-la-la.
+				</p>
+				<p>
+					Personen längst fram är konduktör och tar beslut om avgångstid. Det är konduktörens ansvar att se till att ingen gått ombord på tåget med enkelbiljett (enkelspenta) samt att upprepa versen efter eget behag. Ett vanligt knep för att skrämma bort enkelbiljettsmarodörer (som per definition är plankare på Dubbelspentatåget) är att föra tåget långt bort och helt enkelt tvinga av dessa individer innan returfärden.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="historian" class="container" ng-controller="history-controller">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<h1 class="text-center">Historian</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<ul>
+					<li ng-repeat="story in histories">{{ story }}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="js/scroll.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55203776-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

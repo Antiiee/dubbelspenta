@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>FIKA</title>
+	<style type="text/css">
+		body
+		{
+			font-family: verdana;
+			font-size: 30px;
+			padding-top: 20%;
+		}
+	</style>
+</head>
+<body onload="getName()">
+<script>
+	Date.prototype.getWeek = function() {
+		var onejan = new Date(this.getFullYear(),0,1);
+		return Math.ceil((((this - onejan) / 86400000) + onejan.getDay())/7);
+	}
+
+	var today = new Date();
+	var week = today.getWeek();
+	var hour = today.getHours();
+	var day = today.getDay();
+
+	if((day > 3) || (day == 3 && hour >= 19)){
+	    week++;
+	}
+	 
+	var ansvarig = 	['Daniel',
+					'Anton',
+					'Cricka',
+					'Chrilleeeeeeeeee',
+					'Sofia',
+					'Sofie'
+					];
+
+	function getName(){
+	    	document.getElementById('namn').innerHTML = ansvarig[Math.floor((week+6)/2)%6] + " fixar fika!";
+	}
+
+</script>
+<center>
+	<h1 id="namn"></h1>
+</center>
+</body>
+</html>

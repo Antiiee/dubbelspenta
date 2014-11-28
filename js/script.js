@@ -31,12 +31,8 @@ module.controller('presentation-controller', function($scope){
 			name: "Anton Arbring",
 			position: "Web & Kassör",
 			image: base+"antonsmall.jpg"
-		}
-	]
-
-	$scope.enkel.members = [
-		{
-			name: "Amanda Meisterfalk",
+		},{
+			name: "Amanda Meistefalk",
 			position: "",
 			image: base+"amanda.jpg"
 		},{

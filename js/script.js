@@ -33,11 +33,11 @@ module.controller('presentation-controller', function($scope){
 			image: base+"antonsmall.jpg"
 		},{
 			name: "Amanda Meistefalk",
-			position: "",
+			position: "Pimp och sociala medier",
 			image: base+"amanda.jpg"
 		},{
 			name: "Marcus Nihlén",
-			position: "",
+			position: "Festerist och filfak",
 			image: base+"marcus.jpg"
 		}
 	]

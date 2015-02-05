@@ -28,10 +28,6 @@ module.controller('presentation-controller', function($scope){
 			position: "Web & Idé",
 			image: base+"danielsmall.jpg"
 		},{
-			name: "Anton Arbring",
-			position: "Web & Kassör",
-			image: base+"antonsmall.jpg"
-		},{
 			name: "Amanda Meistefalk",
 			position: "Pimp & sociala medier",
 			image: base+"amanda.jpg"
@@ -44,6 +40,10 @@ module.controller('presentation-controller', function($scope){
 
 	$scope.kvadrupel.members = [
 		{
+			name: "Anton Arbring",
+			position: "",
+			image: base+"antonsmall.jpg"
+		},{
 			name: "Christoffer Dahl",
 			position: "",
 			image: base+"nighteaglesmall.jpg"

@@ -8,3 +8,12 @@ var ig = require('instagram-node').instagram(),
 var instaConf = JSON.parse(fs.readFileSync('instagram.json', 'UTF-8'));
 ig.use({ client_id: instaConf.APP_ID,
          client_secret: instaConf.APP_SECRET });
+
+// EXPRESS CONFIG
+app.set('view engine', 'ejs');
+app.set('port', process.env.PORT || 8000);
+app.use("/scripts",express.static(__dirname+"/scripts"));
+
+var server = app.listen(app.get('port'), function() {
+  console.log("Listening on port %d", server.address().port);
+});

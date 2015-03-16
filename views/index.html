@@ -8,8 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
   </head>
-  <body>
-    <h1>hej</h1>
+  <body ng-app="ds">
+    <div class="container" ng-controller="photos">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="text-center">Dubbelspentasittningen</h1>
+        </div>
+      </div>
+      <div class="row">
+        <img ng-if="image_url" src="{{ image_url }}" class="img-responsive">
+      </div>
+    </div>
     <script src="/angular/angular.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="/public/app.js"></script>
   </body>
 </html>

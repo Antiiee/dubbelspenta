@@ -17,3 +17,8 @@ app.use("/scripts",express.static(__dirname+"/scripts"));
 var server = app.listen(app.get('port'), function() {
   console.log("Listening on port %d", server.address().port);
 });
+
+// Subscribe to hashtag
+ig.add_tag_subscription('dubbelspenta', 'http://213.114.76.130/new_img', function(err, result, remaining, limit){
+  console.log("Successfully subscribed to hashtag");
+});

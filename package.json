@@ -1,5 +1,5 @@
 {
-  "name": "dubbelspenta-splash",
+  "name": "dubbelspenta",
   "version": "0.1.0",
   "description": "Splash screen for the dubbelspentasittning",
   "main": "app.js",

@@ -22,3 +22,8 @@ var server = app.listen(app.get('port'), function() {
 ig.add_tag_subscription('dubbelspenta', 'http://213.114.76.130/new_img', function(err, result, remaining, limit){
   console.log("Successfully subscribed to hashtag");
 });
+
+// Bind all types of requests to '/new_img'
+app.all('/new_img', function(req, res){
+  // Send image url to frontend via io
+});

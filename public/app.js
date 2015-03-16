@@ -6,7 +6,7 @@ app.controller('photos', ['$scope', '$http', function($scope, $http){
     console.log(image);
     $http({
             url: image,
-            type: 'POST',
+            method: 'POST',
             crossDomain: true,
             dataType: 'jsonp'
         }).success(function(response){

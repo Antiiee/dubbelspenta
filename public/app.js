@@ -5,7 +5,7 @@ app.controller('photos', ['$scope', '$http', function($scope, $http){
   socket.on('image', function(image){
     console.log(image);
     $http({
-            url: url,
+            url: image,
             type: 'POST',
             crossDomain: true,
             dataType: 'jsonp'

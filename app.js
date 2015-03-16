@@ -19,8 +19,7 @@ var io = require('socket.io').listen(server);
 
 // Subscribe to hashtag
 ig.add_tag_subscription('dubbelspenta', 'http://dubbelspenta.herokuapp.com/new_img', function(err, result, remaining, limit){
-  if(!err)
-    console.log("Successfully subscribed to hashtag:", result);
+  console.log("Successfully subscribed to hashtag:", result);
 });
 
 app.get('/', function(req, res){

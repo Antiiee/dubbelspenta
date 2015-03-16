@@ -6,7 +6,6 @@ var ig = require('instagram-node').instagram(),
     io = require('socket.io')(http);
 
 // read instagram info
-var instaConf = JSON.parse(fs.readFileSync('instagram.json', 'UTF-8'));
 ig.use({ client_id: process.env.APP_ID,
          client_secret: process.env.APP_SECRET });
 

@@ -38,7 +38,7 @@ io.on('connection', function(socket){
   Instagram.tags.recent({
       name: 'dubbelspenta',
       complete: function(data) {
-        var url = 'https://api.instagram.com/v1/tags/' + data[0].object_id + '/media/recent?client_id='+process.env.APP_ID
+        var url = 'https://api.instagram.com/v1/tags/' + data[0].id + '/media/recent?client_id='+process.env.APP_ID
         socket.emit('image', url);
       }
   });

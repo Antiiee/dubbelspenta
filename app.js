@@ -28,15 +28,15 @@ app.use (function(req, res, next) {
 // read instagram info
 Instagram.set('client_id', process.env.APP_ID);
 Instagram.set('client_secret', process.env.APP_SECRET);
-Instagram.set('callback_url', 'http://213.114.76.130/callback');
-Instagram.set('redirect_uri', 'http://213.114.76.130');
+Instagram.set('callback_url', 'http://dubbelspenta.herokuapp.com/callback');
+Instagram.set('redirect_uri', 'http://dubbelspenta.herokuapp.com');
 
 // Subscribe to hashtag
 Instagram.subscriptions.subscribe({
   object: 'tag',
   object_id: 'dubbelspenta',
   aspect: 'media',
-  callback_url: 'http://213.114.76.130/callback',
+  callback_url: 'http://dubbelspenta.herokuapp.com/callback',
   type: 'subscription',
   id: '#'
 });

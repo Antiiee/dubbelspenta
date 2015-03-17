@@ -25,6 +25,12 @@ app.use (function(req, res, next) {
     });
 });
 
+// Initialize io for heroku
+io.configure(function () {
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 10);
+});
+
 // read instagram info
 Instagram.set('client_id', process.env.APP_ID);
 Instagram.set('client_secret', process.env.APP_SECRET);

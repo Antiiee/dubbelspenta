@@ -1,0 +1,24 @@
+.container{
+  color: white;
+}
+img{
+  margin: 0 auto;
+}
+.cover {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: fixed;
+  z-index: -1;
+
+}
+.cover:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom right,#537F41,#B6DFA6);
+  opacity: 1;
+}

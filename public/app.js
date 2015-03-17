@@ -5,7 +5,7 @@ app.controller('photos', ['$scope', '$http', function($scope, $http){
   // on first image
   socket.on('firstImage', function(data){
     $scope.$apply(function(){
-      $scope.images = data.images;
+      $scope.image = data.images[0];
     });
   });
 
@@ -19,7 +19,7 @@ app.controller('photos', ['$scope', '$http', function($scope, $http){
       }
     };
     $http.jsonp(url, config).success(function(response){
-      $scope.images.unshift(response.data[0].images.standard_resolution.url);
-    })
+      $scope.image = response.data[0].images.standard_resolution.url;
+    });
   });
 }]);

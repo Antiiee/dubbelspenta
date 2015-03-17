@@ -7,16 +7,18 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/style.css">
   </head>
   <body ng-app="ds">
-    <div class="container" ng-controller="photos">
+    <div class="cover"></div>
+    <div class="container" ng-controller="photos" ng-click="click()">
       <div class="row">
         <div class="col-xs-12">
-          <h1 class="text-center">Dubbelspentasittningen</h1>
+          <h1 class="text-center">#dubbelspenta</h1>
         </div>
       </div>
-      <div class="row" ng-repeat="image in images">
-        <img src="{{ image }}" class="img-responsive">
+      <div class="row">
+          <img ng-src="{{ image }}" class="img-responsive">
       </div>
     </div>
     <script src="/angular/angular.js"></script>

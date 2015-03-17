@@ -1,14 +1,11 @@
 var Instagram = require('instagram-node-lib'),
     fs = require('fs'),
+    port = process.env.PORT || 8000,
     express = require('express'),
     app = express(),
-    ejs = require('ejs');
-
-// read instagram info
-Instagram.set('client_id', process.env.APP_ID);
-Instagram.set('client_secret', process.env.APP_SECRET);
-Instagram.set('callback_url', 'http://dubbelspenta.herokuapp.com/callback');
-Instagram.set('redirect_uri', 'http://dubbelspenta.herokuapp.com');
+    io = require('socket.io').listen(app.listen(port)),
+    ejs = require('ejs'),
+    _ = require('lodash');
 
 // EXPRESS CONFIG
 app.engine('html', ejs.renderFile);
@@ -16,43 +13,59 @@ app.set('port', process.env.PORT || 8000);
 app.use("/public",express.static(__dirname+"/public"));
 app.use(express.static('node_modules'));
 
-var server = app.listen(app.get('port'));
-var io = require('socket.io').listen(server);
+// read instagram info
+Instagram.set('client_id', process.env.APP_ID);
+Instagram.set('client_secret', process.env.APP_SECRET);
+Instagram.set('callback_url', 'http://213.114.76.130/callback');
+Instagram.set('redirect_uri', 'http://213.114.76.130');
 
 // Subscribe to hashtag
 Instagram.subscriptions.subscribe({
   object: 'tag',
   object_id: 'dubbelspenta',
   aspect: 'media',
-  callback_url: 'http://dubbelspenta.herokuapp.com/new_img',
+  callback_url: 'http://213.114.76.130/callback',
   type: 'subscription',
   id: '#'
 });
 
+// Root url
 app.get('/', function(req, res){
   res.render('index.html')
 })
 
+// Handle the initial connection
+// Send the latest images to client
 io.on('connection', function(socket){
   console.log('a user connected');
   Instagram.tags.recent({
       name: 'dubbelspenta',
       complete: function(data) {
-        var url = 'https://api.instagram.com/v1/tags/' + data[0].id + '/media/recent?client_id='+process.env.APP_ID
-        socket.emit('image', url);
+        data = _.map(data, function(i){ return i.images.standard_resolution.url; });
+        socket.emit('firstImage', { images: data });
       }
   });
 });
 
+// catch that url callback
 app.get('/callback', function(req, res){
     var handshake =  Instagram.subscriptions.handshake(req, res);
 });
 
 // Bind all types of requests to '/new_img'
-app.all('/new_img', function(req, res){
+app.post('/callback', function(req, res){
   // Send image url to frontend via io
   var data = req.body;
+  console.log(data)
 
-  var url = 'https://api.instagram.com/v1/tags/' + data[0].object_id + '/media/recent?client_id='+process.env.APP_ID
-  io.emit('image', url);
+  data.forEach(emit(img));
+
+  res.end();
 });
+
+function emit(img){
+  var url = 'https://api.instagram.com/v1/tags/' + img.object_id + '/media/recent?client_id='+process.env.APP_ID;
+  io.emit('image', url);
+}
+
+console.log('Server listening on ', port);

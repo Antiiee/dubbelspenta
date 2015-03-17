@@ -1,12 +1,11 @@
+var socket = io();
 var app = angular.module('ds', []);
 
-app.controller('photos', ['$scope', '$http', function($scope, $http){
-  var socket = io();
-  socket.on('image', function(image){
-    console.log(image);
-    $http.jsonp(image, {'callback': 'JSON_CALLBACK'}).success(function(response){
-      console.log(JSON.parse(response.data));
-      $scope.image_url = response.data;
+app.controller('photos', ['$scope', function($scope){
+  // on first image
+  socket.on('firstImage', function(data){
+    $scope.$apply(function(){
+      $scope.images = data.images;
     });
   });
 }]);

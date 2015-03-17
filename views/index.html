@@ -15,8 +15,8 @@
           <h1 class="text-center">Dubbelspentasittningen</h1>
         </div>
       </div>
-      <div class="row">
-        <img ng-if="image_url" src="{{ image_url }}" class="img-responsive">
+      <div class="row" ng-repeat="image in images">
+        <img src="{{ image }}" class="img-responsive">
       </div>
     </div>
     <script src="/angular/angular.js"></script>

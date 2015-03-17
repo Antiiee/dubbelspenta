@@ -1,4 +1,4 @@
-var socket = io();
+var socket = io('/');
 var app = angular.module('ds', []);
 
 app.controller('photos', ['$scope', '$http', function($scope, $http){

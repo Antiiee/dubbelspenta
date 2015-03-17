@@ -12,6 +12,18 @@ app.engine('html', ejs.renderFile);
 app.set('port', process.env.PORT || 8000);
 app.use("/public",express.static(__dirname+"/public"));
 app.use(express.static('node_modules'));
+app.use (function(req, res, next) {
+    var data='';
+    req.setEncoding('utf8');
+    req.on('data', function(chunk) {
+       data += chunk;
+    });
+
+    req.on('end', function() {
+        req.body = data;
+        next();
+    });
+});
 
 // read instagram info
 Instagram.set('client_id', process.env.APP_ID);
@@ -55,17 +67,14 @@ app.get('/callback', function(req, res){
 // Bind all types of requests to '/new_img'
 app.post('/callback', function(req, res){
   // Send image url to frontend via io
-  var data = req.body;
-  console.log(data)
+  var data = JSON.parse(req.body);
 
-  data.forEach(emit(img));
+  data.forEach(function(img){
+    var url = 'https://api.instagram.com/v1/tags/' + img.object_id + '/media/recent?client_id='+process.env.APP_ID;
+    io.emit('image', url);
+  });
 
   res.end();
 });
-
-function emit(img){
-  var url = 'https://api.instagram.com/v1/tags/' + img.object_id + '/media/recent?client_id='+process.env.APP_ID;
-  io.emit('image', url);
-}
 
 console.log('Server listening on ', port);
